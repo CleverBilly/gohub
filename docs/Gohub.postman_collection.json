@@ -1,0 +1,1076 @@
+{
+	"info": {
+		"_postman_id": "80f8f309-0995-43b0-8ec6-d9dab31b6222",
+		"name": "Gohub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"item": [
+						{
+							"name": "判断手机是否已注册",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"{{phone}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/signup/phone/exist",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"signup",
+										"phone",
+										"exist"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "判断 Email 是否已注册",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{email}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/signup/email/exist",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"signup",
+										"email",
+										"exist"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "手机号注册",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"billy\",\n    \"password\":\"secret\",\n    \"password_confirm\":\"secret\",\n    \"verify_code\": \"{{verify_code_phone}}\",\n    \"phone\": \"18815137707\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/signup/using-phone",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"signup",
+										"using-phone"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "邮箱注册",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"summer2\",\n    \"password\":\"secret\",\n    \"password_confirm\":\"secret\",\n    \"verify_code\": \"123123\",\n    \"email\": \"summer2@testing.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/signup/using-email",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"signup",
+										"using-email"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Verify Code",
+					"item": [
+						{
+							"name": "图片验证码",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"summer@example.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/verify-codes/captcha",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"verify-codes",
+										"captcha"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "发送短信验证码",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\":\"18815137707\",\n    \"captcha_id\": \"captcha_skip_test\",\n    \"captcha_answer\": \"{{captcha_answer}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/verify-codes/phone",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"verify-codes",
+										"phone"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "发送邮件验证码",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"641833868@qq.com\",\n    \"captcha_id\": \"captcha_skip_test\",\n    \"captcha_answer\": \"{{captcha_answer}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/verify-codes/email",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"verify-codes",
+										"email"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "密码登录",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login_id\": \"summer2@testing.com\",\n    \"captcha_id\": \"captcha_skip_test\",\n    \"captcha_answer\": \"123456\",\n    \"password\": \"secret\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/login/using-password",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"login",
+										"using-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "手机号 + 短信验证码登录",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"18815137707\",\n    \"verify_code\": \"{{verify_code_phone}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/login/using-phone",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"login",
+										"using-phone"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "刷新token",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0NzMzNjM5NiwiZXhwIjoxNjQ3MzM2Mzk2LCJpYXQiOjE2NDIxNTIzOTYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQyMTUyMzk2fQ.GXsJd6ih1eMb0C9t1lwTs8wPF-B7hT42jt6y0cH1VMc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/login/refresh-token",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"login",
+										"refresh-token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Password Rest",
+					"item": [
+						{
+							"name": "重置密码-手机号",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\":\"18815137707\",\n    \"verify_code\": \"{{verify_code_phone}}\",\n    \"password\":\"secret23\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/password-reset/using-phone",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"password-reset",
+										"using-phone"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "重置密码-邮箱",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0NzMzNjM5NiwiZXhwIjoxNjQ3MzM2Mzk2LCJpYXQiOjE2NDIxNTIzOTYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQyMTUyMzk2fQ.GXsJd6ih1eMb0C9t1lwTs8wPF-B7hT42jt6y0cH1VMc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"summer@testing.com\",\n    \"verify_code\": \"{{verify_code_phone}}\",\n    \"password\":\"newpassword\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/password-reset/using-email",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"password-reset",
+										"using-email"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "用户",
+			"item": [
+				{
+					"name": "获取当前用户信息",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改个人信息",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"aufree\",\n    \"introduction\": \"这里是个人描述\",\n    \"city\": \"深圳\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改邮箱",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"summer@testing.com\",\n    \"verify_code\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/email",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改手机号",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\":\"00012312312\",\n    \"verify_code\": \"123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/phone",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"phone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改密码",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"secret\",\n    \"new_password\": \"newpassword\",\n    \"new_password_confirm\": \"newpassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改头像",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/Users/liuxiaobin/Desktop/IMG_0539.jpeg"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/avatar",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "分类",
+			"item": [
+				{
+					"name": "添加分类",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"新分类\",\n    \"description\": \"这里是描述\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "分类列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新分类",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"新分类22\",\n    \"description\": \"这里是描述2222\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除分类",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "话题",
+			"item": [
+				{
+					"name": "添加话题",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"我发的帖子\",\n    \"body\": \"这里是帖子描述这里是帖子描述\",\n    \"category_id\": \"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/topics",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "话题列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"我发的帖子\",\n    \"body\": \"这里是帖子描述这里是帖子描述\",\n    \"category_id\": \"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/topics",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改话题",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"我发的帖子\",\n    \"body\": \"这里是帖dadaaaddadad描述\",\n    \"category_id\": \"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/topics/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"topics",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除话题",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"我发的帖子\",\n    \"body\": \"这里是帖dadaaaddadad描述\",\n    \"category_id\": \"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/topics/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"topics",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "话题详情",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"我发的帖子\",\n    \"body\": \"这里是帖dadaaaddadad描述\",\n    \"category_id\": \"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/topics/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"topics",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "话题详情 Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"我发的帖子\",\n    \"body\": \"这里是帖dadaaaddadad描述\",\n    \"category_id\": \"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/topics/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"topics",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Link",
+			"item": [
+				{
+					"name": "列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInVzZXJfbmFtZSI6InN1bW1lcjIiLCJleHBpcmVfdGltZSI6MTY0ODE4ODA3NiwiZXhwIjoxNjQ4MTg4MDc2LCJpYXQiOjE2NDMwMDQwNzYsImlzcyI6IkdvaHViIiwibmJmIjoxNjQzMDA0MDc2fQ.BH4VO7YxOrFf96MekWqnEWDocFQjktcHO1pf0SAx-Mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/links",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"links"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
