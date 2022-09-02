@@ -74,3 +74,11 @@ func (lc *LoginController) RefreshToken(c *gin.Context) {
 		})
 	}
 }
+
+// Hello 测试
+func (lc *LoginController) Hello(c *gin.Context) {
+	response.JSON(c, gin.H{
+		"Hello": "Hello Word!",
+	})
+
+}
