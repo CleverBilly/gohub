@@ -1,6 +1,6 @@
 FROM golang:latest
 
-WORKDIR /www/wwwroot/gohub
+WORKDIR /www/gohub
 COPY . .
 
 RUN go build main.go
